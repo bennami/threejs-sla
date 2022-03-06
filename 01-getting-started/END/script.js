@@ -51,20 +51,14 @@ window.addEventListener('resize', () => {
 
     //update renderer
     renderer.setSize(sizes.width, sizes.height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.render(scene, camera); //important to re-render after each change
 });
 
 //renderer
-
 const renderer = new THREE.WebGLRenderer({
     canvas: canvas
 });
 
 renderer.setSize(sizes.width, sizes.height);
-
-//animate to resize objects proportionately
-function animate() { 
-  renderer.render(scene, camera);
-  requestAnimationFrame(animate);
-}
-requestAnimationFrame(animate);
+renderer.render(scene, camera);
