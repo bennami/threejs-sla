@@ -31,14 +31,14 @@ const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height);
 //coordinates when u render the scene you won't see nothing since the camera will be inside the cube
 // to fix this we can just move it a bit
 // we can move any object in this manner
-camera.position.z = 3
+camera.position.z = 3;
 
 //always add the object!
-scene.add(camera)
+scene.add(camera);
+
 //responsive canvas
 //to make our canvas responsive we need to select the DOM element first
 const canvas = document.querySelector('.webgl');
-
 
 window.addEventListener('resize', () => {
     // Update sizes
@@ -54,7 +54,6 @@ window.addEventListener('resize', () => {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 });
 
-
 //renderer
 
 const renderer = new THREE.WebGLRenderer({
@@ -69,4 +68,3 @@ function animate() {
   requestAnimationFrame(animate);
 }
 requestAnimationFrame(animate);
-
