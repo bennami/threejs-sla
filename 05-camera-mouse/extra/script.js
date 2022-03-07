@@ -65,6 +65,7 @@ function initScene() {
 function rebuildScene() {
   // Clear the meshgroup
   meshGroup.children = [];
+  // Always use the same random seed
   Math.seedrandom(settings.seed);
   // Create a simple object and add it to the scene.
   const geometry = new THREE.TorusGeometry(settings.torusRadius, settings.torusTube, 16, 100);
