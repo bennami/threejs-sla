@@ -10,8 +10,10 @@ const settings = {
   gridHelper: false,
 };
 
-function lerp(a, b, t) {
-  return (1 - t) * a + t * b;
+// Linear interpolation between two values.
+// E.g. if we lerp from 100 - 200 at 0.5, we get 150.
+function lerp(start, end, t) {
+  return (1 - t) * start + t * end;
 }
 
 function initScene() {
