@@ -1,4 +1,4 @@
-let scene, camera, renderer, clock, gui, gridHelper;
+let scene, camera, renderer, clock, gui, gridHelper, solarSystem;
 
 // Define the window size.
 const sizes = {
@@ -23,12 +23,11 @@ function initScene() {
   // Create a simple object and add it to the scene.
   const loader = new THREE.GLTFLoader();
   loader.load("assets/solar-system.glb", (gltf) => {
-    const mesh = gltf.scene;
-    mesh.scale.set(30, 30, 30);
-    mesh.rotation.y = Math.PI;
-    mesh.position.z = 100;
-
-    scene.add(mesh);
+    solarSystem = gltf.scene;
+    solarSystem.scale.set(30, 30, 30);
+    solarSystem.rotation.y = Math.PI;
+    solarSystem.position.z = 100;
+    scene.add(solarSystem);
   });
 
   const ambientLight = new THREE.AmbientLight(0xffffff, 1.0);
@@ -86,6 +85,14 @@ function animate() {
   const targetPositionZ = lerp(16, 300, scrollFraction);
   // Animate the camera to the new position.
   camera.position.z = camera.position.z + (targetPositionZ - camera.position.z) * 0.1;
+
+  if (solarSystem) {
+    const mars = solarSystem.children[1];
+    mars.rotation.y += 0.01;
+    // debugger;
+    // group.children[6].rotation.y += 0.01;
+    // group.children[7].rotation.y += 0.01;
+  }
 
   gridHelper.visible = settings.gridHelper;
   renderer.render(scene, camera);

@@ -1,4 +1,4 @@
-let scene, camera, renderer, clock, gui, gridHelper;
+let scene, camera, renderer, clock, gui, gridHelper, solarSystem;
 
 // Define the window size.
 const sizes = {
@@ -17,12 +17,11 @@ function initScene() {
   // Create a simple object and add it to the scene.
   const loader = new THREE.GLTFLoader();
   loader.load("assets/solar-system.glb", (gltf) => {
-    const mesh = gltf.scene;
-    mesh.scale.set(30, 30, 30);
-    mesh.rotation.y = Math.PI;
-    mesh.position.z = 100;
-
-    scene.add(mesh);
+    solarSystem = gltf.scene;
+    solarSystem.scale.set(30, 30, 30);
+    solarSystem.rotation.y = Math.PI;
+    solarSystem.position.z = 100;
+    scene.add(solarSystem);
   });
 
   const ambientLight = new THREE.AmbientLight(0xffffff, 1.0);
