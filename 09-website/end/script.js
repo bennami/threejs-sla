@@ -78,11 +78,13 @@ function resize() {
 function animate() {
   // Figure out where we are in the document.
   const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+  // Calculate this as a fraction of the total height (so a value between 0.0-1.0).
   const scrollFraction = window.scrollY / totalHeight;
+  // Convert this to the Z position of the camera.
   const targetPositionZ = lerp(16, 300, scrollFraction);
+  // Animate the camera to the new position.
   camera.position.z = camera.position.z + (targetPositionZ - camera.position.z) * 0.1;
 
-  window.scroll;
   gridHelper.visible = settings.gridHelper;
   renderer.render(scene, camera);
   requestAnimationFrame(animate);
