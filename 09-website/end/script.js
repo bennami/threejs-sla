@@ -10,6 +10,10 @@ const settings = {
   gridHelper: false,
 };
 
+function lerp(a, b, t) {
+  return (1 - t) * a + t * b;
+}
+
 function initScene() {
   // Create the scene.
   scene = new THREE.Scene();
@@ -71,16 +75,11 @@ function resize() {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 }
 
-function lerp(a, b, t) {
-  return (1 - t) * a + t * b;
-}
-
 function animate() {
   // Figure out where we are in the document.
   const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
   const scrollFraction = window.scrollY / totalHeight;
   const targetPositionZ = lerp(16, 300, scrollFraction);
-  // camera.position.z =
   camera.position.z = camera.position.z + (targetPositionZ - camera.position.z) * 0.1;
 
   window.scroll;
