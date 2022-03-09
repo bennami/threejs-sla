@@ -51,7 +51,7 @@ function initScene() {
   gui.add(camera.position, "z").min(0).max(300).step(0.1);
   gui.add(camera.position, "x").min(-20).max(20).step(0.01);
   gui.add(camera.position, "y").min(-20).max(20).step(0.01);
-  // gui.hide();
+  gui.hide();
 
   // const controls = new THREE.OrbitControls(camera, renderer.domElement);
 }
