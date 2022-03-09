@@ -7,7 +7,7 @@ const scene = new THREE.Scene();
 
 // create objects
 // to make an object we need a Mesh that contains two things:
-// A geometry (the kind of shape we want) 
+// A geometry (the kind of shape we want)
 // A material (how it looks: color, texture, etc.)
 const geometry = new THREE.BoxGeometry(1, 1, 1);
 const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
@@ -16,20 +16,18 @@ const cube = new THREE.Mesh(geometry, material);
 //once you create your Mesh, you need to add it to the scene
 scene.add(cube);
 
-
-
 //Camera
 //first argument: field of view
-//sec argument: the aspect ratio, 
+//sec argument: the aspect ratio,
 ///we set these in an object so we can easily reuse them
 const sizes = {
-    width: window.innerWidth,
-    height: window.innerHeight
-}
+  width: window.innerWidth,
+  height: window.innerHeight,
+};
 
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height);
 
-//Because everything you create is at (0,0,0) 
+//Because everything you create is at (0,0,0)
 //coordinates when u render the scene you won't see nothing since the camera will be inside the cube
 // to fix this we can just move it a bit
 // we can move any object in this manner
@@ -40,37 +38,42 @@ scene.add(camera);
 
 //responsive canvas
 //to make our canvas responsive we need to select the DOM element first
-const canvas = document.querySelector('.webgl');
+const canvas = document.querySelector(".webgl");
 
-window.addEventListener('resize', () => {
-    // Update sizes
-    sizes.width = window.innerWidth;
-    sizes.height = window.innerHeight;
+window.addEventListener("resize", () => {
+  // Update sizes
+  sizes.width = window.innerWidth;
+  sizes.height = window.innerHeight;
 
-    //update camera
-    camera.aspect = sizes.width / sizes.height;
-    camera.updateProjectionMatrix();
+  //update camera
+  camera.aspect = sizes.width / sizes.height;
+  camera.updateProjectionMatrix();
 
-    //update renderer
-    renderer.setSize(sizes.width, sizes.height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  //update renderer
+  renderer.setSize(sizes.width, sizes.height);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 });
 
 //renderer
 const renderer = new THREE.WebGLRenderer({
-    canvas: canvas
+  canvas: canvas,
 });
-
-function animate() {
-  requestAnimationFrame(animate);
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.005;
-    cube.rotation.z += 0.01;
-
-    camera.position.z += 0.01;
-    renderer.render(scene, camera);
-}
-animate();
 
 renderer.setSize(sizes.width, sizes.height);
 renderer.render(scene, camera);
+
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.enabled = false;
+
+function animate() {
+  cube.rotation.x += 0.01;
+  cube.rotation.y += 0.005;
+  cube.rotation.z += 0.01;
+
+  camera.position.z += 0.01;
+  controls.update();
+  renderer.render(scene, camera);
+  requestAnimationFrame(animate);
+}
+
+animate();

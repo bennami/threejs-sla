@@ -66,12 +66,8 @@ function animate() {
   gridHelper.visible = settings.gridHelper;
   const targetPositionX = mouse.x * settings.distance;
   const targetPositionY = mouse.y * settings.distance;
-  camera.position.x =
-    camera.position.x +
-    (targetPositionX - camera.position.x) * settings.animationSpeed;
-  camera.position.y =
-    camera.position.y +
-    (targetPositionY - camera.position.y) * settings.animationSpeed;
+  camera.position.x = camera.position.x + (targetPositionX - camera.position.x) * settings.animationSpeed;
+  camera.position.y = camera.position.y + (targetPositionY - camera.position.y) * settings.animationSpeed;
 
   // camera.position.set(mouse.x * settings.distance, 10, 50);
   camera.lookAt(scene.position);

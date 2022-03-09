@@ -22,8 +22,8 @@ function initScene() {
   scene.add(mesh);
 
   // Add some buildings
+  const buildingGeo = new THREE.BoxGeometry(5, 5, 5);
   for (let i = 0; i < 100; i++) {
-    const buildingGeo = new THREE.BoxGeometry(5, 5, 5);
     const buildingMat = new THREE.MeshStandardMaterial({ color: 0x999999 });
     const building = new THREE.Mesh(buildingGeo, buildingMat);
     const gridX = (Math.floor(Math.random() * 10) - 5) * 10;
@@ -37,7 +37,6 @@ function initScene() {
     scene.add(building);
   }
 
-  // const manager = new THREE.LoadingManager();
   const loader = new THREE.GLTFLoader();
   loader.load("assets/car-scaled.glb", (gltf) => {
     const car = gltf.scene;

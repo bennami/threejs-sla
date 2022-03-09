@@ -2,9 +2,32 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Basic scene</title>
+    <title>Basic Scene</title>
   </head>
-  <body></body>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    /* Then, we can fix the canvas on the top left using its webgl class to select it: */
+    .webgl {
+      position: fixed;
+      top: 0;
+      left: 0;
+      outline: none;
+    }
+
+    /* if you want to remove any type of scrolling */
+    html,
+    body {
+      overflow: hidden;
+    }
+  </style>
+  <body>
+    <canvas class="webgl"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.138.3/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.138.3/examples/js/controls/OrbitControls.js"></script>
+    <script src="./script.js"></script>
+  </body>
 </html>

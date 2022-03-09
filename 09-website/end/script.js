@@ -10,12 +10,6 @@ const settings = {
   gridHelper: false,
 };
 
-// Linear interpolation between two values.
-// E.g. if we lerp from 100 - 200 at 0.5, we get 150.
-function lerp(start, end, t) {
-  return (1 - t) * start + t * end;
-}
-
 function initScene() {
   // Create the scene.
   scene = new THREE.Scene();
@@ -57,7 +51,7 @@ function initScene() {
   gui.add(camera.position, "z").min(0).max(300).step(0.1);
   gui.add(camera.position, "x").min(-20).max(20).step(0.01);
   gui.add(camera.position, "y").min(-20).max(20).step(0.01);
-  gui.hide();
+  // gui.hide();
 
   // const controls = new THREE.OrbitControls(camera, renderer.domElement);
 }
@@ -82,16 +76,13 @@ function animate() {
   // Calculate this as a fraction of the total height (so a value between 0.0-1.0).
   const scrollFraction = window.scrollY / totalHeight;
   // Convert this to the Z position of the camera.
-  const targetPositionZ = lerp(16, 300, scrollFraction);
+  const targetPositionZ = THREE.MathUtils.lerp(16, 300, scrollFraction);
   // Animate the camera to the new position.
   camera.position.z = camera.position.z + (targetPositionZ - camera.position.z) * 0.1;
 
   if (solarSystem) {
     const mars = solarSystem.children[1];
     mars.rotation.y += 0.01;
-    // debugger;
-    // group.children[6].rotation.y += 0.01;
-    // group.children[7].rotation.y += 0.01;
   }
 
   gridHelper.visible = settings.gridHelper;
