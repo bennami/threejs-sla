@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic Scene</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    /* Then, we can fix the canvas on the top left using its webgl class to select it: */
+    .webgl {
+      position: fixed;
+      top: 0;
+      left: 0;
+      outline: none;
+    }
+
+    html,
+    body {
+      background: linear-gradient(to bottom, #140322, #2b1c49);
+      font-family: helvetica, arial, sans-serif;
+      color: white;
+    }
+
+    main {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+      padding-top: 50vh;
+    }
+
+    h1 {
+      font-size: 8rem;
+      margin-bottom: 6rem;
+    }
+    h2 {
+      margin-top: 20rem;
+      font-size: 4rem;
+      margin-bottom: 2rem;
+    }
+    p {
+      margin-bottom: 2rem;
+      font-size: 3rem;
+    }
+    p.credits {
+      font-size: 1rem;
+    }
+    a {
+      color: inherit;
+    }
+    hr {
+      margin: 2rem 0;
+      border: 0;
+      border-top: 1px solid white;
+    }
+  </style>
+  <body>
+    <canvas class="webgl"></canvas>
+    <main>
+      <h1>Welcome.</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, quae aperiam! Nostrum odio blanditiis maxime
+        quidem assumenda reiciendis repellendus quibusdam earum est praesentium libero illo, ab nulla enim iusto alias.
+      </p>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus molestiae laboriosam exercitationem ratione
+        atque cumque! Dolor placeat accusantium esse maxime dignissimos quae, nesciunt, aperiam explicabo possimus
+        temporibus soluta commodi fugit?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, iure accusantium blanditiis, perferendis,
+        cupiditate repellendus vitae expedita inventore ipsum voluptate consequuntur cumque repudiandae. Voluptates
+        totam odio nesciunt eaque expedita eligendi?
+      </p>
+      <h2>About</h2>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim similique libero quis omnis voluptas veritatis
+        atque accusamus nulla quod aspernatur, est temporibus architecto odio. Est earum expedita ut rerum quia?
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim similique libero quis omnis voluptas veritatis
+        atque accusamus nulla quod aspernatur, est temporibus architecto odio. Est earum expedita ut rerum quia?
+      </p>
+      <hr />
+      <p class="credits">
+        Solar System by Jarlan Perez [<a href="https://creativecommons.org/licenses/by/3.0/">CC-BY</a>] — via
+        <a href="https://poly.pizza/m/8hnnpNiQMmy">Poly Pizza</a>
+      </p>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.138.3/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.138.3/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.138.3/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lil-gui@0.16"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
